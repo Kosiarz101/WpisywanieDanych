@@ -2,11 +2,13 @@ package WpisywanieDanych;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
 
         Pracownik[] pracownicy = new Pracownik[3];
         File file = new File("F:\\Users\\Kosiarz\\Documents\\Projekty\\Java\\WpisywanieDanych\\Dane.txt");
@@ -29,6 +31,18 @@ public class Main {
             System.out.println(pracownicy[i].getMiasto());
             System.out.println(pracownicy[i].getZawod());
         }
-
+        FileWriter writer = new FileWriter("F:\\Users\\Kosiarz\\Documents\\Projekty\\Java\\WpisywanieDanych\\DaneZapisane.txt");
+        for(byte i=0; i<pracownicy.length; i++) {
+            writer.write(pracownicy[i].getImieNazwisko());
+            writer.write("\n");
+            writer.write(String.valueOf(pracownicy[i].getWiek()));
+            writer.write("\n");
+            writer.write(pracownicy[i].getMiasto());
+            writer.write("\n");
+            writer.write(pracownicy[i].getZawod());
+            writer.write("\n");
+        }
+        writer.close();
     }
+
 }
